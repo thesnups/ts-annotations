@@ -1,0 +1,20 @@
+{
+  "name": "ts-annotations",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc --declaration"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "core-js": "^2.4.1",
+    "reflect-metadata": "^0.1.8"
+  },
+  "devDependencies": {
+    "@types/core-js": "^0.9.34",
+    "@types/reflect-metadata": "0.0.5",
+    "typescript": "^2.0.6"
+  }
+}
