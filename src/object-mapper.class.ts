@@ -54,10 +54,8 @@ export class ObjectMapper {
 
         try {
             for (let i = 0; i < pathsLength; i++) {
-                console.log('  '.repeat(i) + paths[i]);
                 obj = obj[paths[i]];
             };
-            console.log();
         } catch (e) {
             obj = undefined;
         }
