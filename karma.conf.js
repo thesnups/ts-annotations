@@ -11,13 +11,13 @@ module.exports = function(config) {
             debug: true
         },
         plugins: [
-            'karma-phantomjs-launcher',
+            'karma-chrome-launcher',
             'karma-jasmine',
             'karma-browserify',
             'karma-spec-reporter'
         ],
         reporters: ['spec'],
-        browsers: ['PhantomJS'],
+        browsers: ['Chrome'],
         singleRun: true,
         logLevel: config.LOG_INFO
     });
