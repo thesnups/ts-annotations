@@ -13,8 +13,5 @@
             "./node_modules/@types"
         ],
         "outDir": "build"
-    },
-    "files": [
-        "./index.ts"
-    ]
+    }
 }
