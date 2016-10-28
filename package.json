@@ -4,7 +4,8 @@
   "description": "",
   "main": "build/index.js",
   "scripts": {
-    "build": "tsc --declaration"
+    "build": "tsc --declaration",
+    "watch": "tsc --declaration --watch"
   },
   "author": "",
   "license": "ISC",
