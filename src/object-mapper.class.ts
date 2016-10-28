@@ -14,23 +14,24 @@ export class ObjectMapper {
 
         let instance: T = new typeRef(...args);
         const pathMapping = typeRef.prototype.pathMapping;
+        const typeMapping = typeRef.prototype.typeMapping;
 
-        if (pathMapping) {
+        if (pathMapping && typeMapping) {
             pathMapping.forEach((val, key) => {
-                let jsonValue = this.getValueFromObjectPath(json, val);
-                let deserializedType;
-                if (typeRef.prototype.typeMapping) {
-                    deserializedType = typeRef.prototype.typeMapping.get(key);
-                }
-                if (deserializedType) {
-                    if (primitivesMap.get(deserializedType)) {
-                        jsonValue = primitivesMap.get(deserializedType)(jsonValue);
+                let value = this.getValueFromObjectPath(json, val);
+                let type = typeMapping.get(key);
+
+                if (type) {
+                    const primitiveConvert = primitivesMap.get(type);
+                    if (primitiveConvert) {
+                        value = primitiveConvert(value);
                     } else {
-                        jsonValue = this.readValue(jsonValue, deserializedType);
+                        value = this.readValue(value, type);
                     }
                 }
-                if (typeof instance[key] === 'undefined' && jsonValue) {
-                    instance[key] = jsonValue;
+
+                if (value) {
+                    instance[key] = value;
                 }
             });
         }
@@ -53,8 +54,10 @@ export class ObjectMapper {
 
         try {
             for (let i = 0; i < pathsLength; i++) {
+                console.log('  '.repeat(i) + paths[i]);
                 obj = obj[paths[i]];
             };
+            console.log();
         } catch (e) {
             obj = undefined;
         }
