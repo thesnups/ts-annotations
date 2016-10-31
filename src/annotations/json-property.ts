@@ -10,7 +10,7 @@ export function JsonProperty(path?: string) {
         target.pathMapping = target.pathMapping || new Map<string, string>();
         target.pathMapping.set(propertyKey, path);
 
-        const type = Reflect.getMetadata("design:type", target, propertyKey);
+        const type = Reflect.getMetadata('design:type', target, propertyKey);
         target.typeMapping = target.typeMapping || new Map<string, Function>();
         target.typeMapping.set(propertyKey, type);
     };
