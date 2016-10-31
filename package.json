@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "tsc -w",
-    "test": "karma start karma.conf.js"
+    "test": "npm run build && karma start karma.conf.js"
   },
   "author": "",
   "license": "ISC",

@@ -1,5 +1,6 @@
-module.exports = function(config) {
-    config.set({
+module.exports = function (config) {
+
+    const configuration = {
         frameworks: ['browserify', 'jasmine'],
         files: [
             'build/**/*.spec.js'
@@ -19,6 +20,18 @@ module.exports = function(config) {
         reporters: ['spec'],
         browsers: ['Chrome'],
         singleRun: true,
-        logLevel: config.LOG_INFO
-    });
+        logLevel: config.LOG_INFO,
+        customLaunchers: {
+            Chrome_travis_ci: {
+                base: 'Chrome',
+                flags: ['--no-sandbox']
+            }
+        },
+    };
+
+    if (process.env.TRAVIS) {
+        configuration.browsers = ['Chrome_travis_ci'];
+    }
+
+    config.set(configuration);
 };

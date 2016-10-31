@@ -3,3 +3,4 @@ build/
 launch.json
 tasks.json
 .vscode/
+npm-debug.log
