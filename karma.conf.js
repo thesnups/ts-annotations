@@ -1,6 +1,6 @@
 module.exports = function (config) {
 
-    const configuration = {
+    config.set({
         frameworks: ['browserify', 'jasmine'],
         files: [
             'build/**/*.spec.js'
@@ -12,26 +12,14 @@ module.exports = function (config) {
             debug: true
         },
         plugins: [
-            'karma-chrome-launcher',
+            'karma-phantomjs-launcher',
             'karma-jasmine',
             'karma-browserify',
             'karma-spec-reporter'
         ],
         reporters: ['spec'],
-        browsers: ['Chrome'],
+        browsers: ['PhantomJS'],
         singleRun: true,
         logLevel: config.LOG_INFO,
-        customLaunchers: {
-            Chrome_travis_ci: {
-                base: 'Chrome',
-                flags: ['--no-sandbox']
-            }
-        },
-    };
-
-    if (process.env.TRAVIS) {
-        configuration.browsers = ['Chrome_travis_ci'];
-    }
-
-    config.set(configuration);
+    });
 };
