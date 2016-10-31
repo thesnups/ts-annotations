@@ -1,5 +1,3 @@
-import 'core-js/es7/reflect';
-import 'reflect-metadata';
 import { ObjectMapper } from '../';
 import { AccountDetails, Address } from './models/';
 import { rawAccountDetails } from './constants/';
