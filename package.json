@@ -2,10 +2,13 @@
   "name": "ts-annotations",
   "version": "1.0.0",
   "description": "",
-  "main": "build/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "npm run clean:build && tsc",
+    "clean:build": "rm -rf build/*",
+    "clean:dist": "rm -rf dist/*",
     "start": "tsc -w",
+    "update-dist": "npm run clean:dist && cp -r build/lib/* dist/",
     "test": "npm run build && karma start karma.conf.js"
   },
   "author": "",

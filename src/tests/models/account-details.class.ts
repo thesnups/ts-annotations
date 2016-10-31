@@ -1,4 +1,4 @@
-import { JsonProperty } from '../../';
+import { JsonProperty } from '../../lib/';
 import { Address } from './';
 
 export class AccountDetails {
