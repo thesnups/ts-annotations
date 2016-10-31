@@ -14,5 +14,8 @@
             "./node_modules/@types"
         ],
         "outDir": "build"
-    }
+    },
+    "include": [
+        "src/**/*.ts"
+    ]
 }

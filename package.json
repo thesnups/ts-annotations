@@ -1,20 +1,23 @@
 {
   "name": "ts-annotations",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "description": "",
-  "main": "build/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "npm run clean:build && tsc",
+    "clean:build": "rm -rf build/*",
+    "clean:dist": "rm -rf dist/*",
     "start": "tsc -w",
+    "update-dist": "npm run clean:dist && cp -r build/lib/* dist/",
     "test": "npm run build && karma start karma.conf.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/core-js": "^0.9.34",
     "core-js": "^2.4.1"
   },
   "devDependencies": {
-    "@types/core-js": "^0.9.34",
     "@types/jasmine": "^2.5.36",
     "@types/reflect-metadata": "0.0.5",
     "browserify": "^13.1.1",

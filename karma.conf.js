@@ -1,12 +1,13 @@
 module.exports = function (config) {
 
     config.set({
+        basePath: 'build/',
         frameworks: ['browserify', 'jasmine'],
         files: [
-            'build/**/*.spec.js'
+            '**/*.spec.js'
         ],
         preprocessors: {
-            'build/**/*.js': ['browserify']
+            '**/*.js': ['browserify']
         },
         browserify: {
             debug: true
