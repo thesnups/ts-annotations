@@ -4,6 +4,7 @@
         "module": "commonjs",
         "moduleResolution": "node",
         "sourceMap": true,
+        "declaration": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "removeComments": true,
@@ -13,8 +14,5 @@
             "./node_modules/@types"
         ],
         "outDir": "build"
-    },
-    "files": [
-        "./index.ts"
-    ]
+    }
 }
