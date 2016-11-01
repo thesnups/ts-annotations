@@ -1,3 +1,4 @@
+/// <reference types="core-js" />
 import Map = require('core-js/es6/map');
 
 export function JsonProperty(path?: string) {
