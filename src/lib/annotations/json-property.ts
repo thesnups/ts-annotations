@@ -1,4 +1,5 @@
 /// <reference types="core-js" />
+/// <reference types="reflect-metadata" />
 import Map = require('core-js/es6/map');
 
 export function JsonProperty(path?: string) {
