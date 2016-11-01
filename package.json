@@ -1,6 +1,6 @@
 {
     "name": "ts-annotations",
-    "version": "0.0.2",
+    "version": "0.0.4",
     "description": "Decorators for simple object mapping inspired by Jackson Annotations",
     "main": "build/index.js",
     "scripts": {
@@ -28,5 +28,10 @@
         "jasmine-core": "^2.5.2",
         "jasmine-spec-reporter": "^2.7.0",
         "typescript": "^2.0.6"
-    }
+    },
+    "files": [
+        "build",
+        "src",
+        "tests"
+    ]
 }
