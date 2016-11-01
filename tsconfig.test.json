@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "removeComments": true,
+        "noImplicitAny": false,
+        "baseUrl": ".",
+        "typeRoots": [
+            "./node_modules/@types"
+        ],
+        "outDir": ".tmp"
+    },
+    "includes": [
+        "./node_modules/jasmine-core/lib/jasmine-core.js",
+        "test/**/*.spec.ts"
+    ]
+}

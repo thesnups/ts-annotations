@@ -15,7 +15,7 @@ describe('ObjectMapper', () => {
     describe('#readValue', () => {
         let mapper: ObjectMapper;
 
-        beforeAll(() => {
+        beforeEach(() => {
             mapper = new ObjectMapper();
         });
 
