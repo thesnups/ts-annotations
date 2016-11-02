@@ -36,6 +36,8 @@ describe('ObjectMapper', () => {
             expect(accountDetails.address.city).toEqual(rawAccountDetails.account.details.summary.location.address.city);
             expect(accountDetails.address.state).toEqual(rawAccountDetails.account.details.summary.location.address.stateCode);
             expect(accountDetails.address.zip).toEqual(rawAccountDetails.account.details.summary.location.address.zip_code);
+
+            expect(accountDetails.phoneNumber).toEqual(rawAccountDetails.account.details.summary.cellPhone);
         });
     });
 });

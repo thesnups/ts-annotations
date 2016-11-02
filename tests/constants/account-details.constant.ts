@@ -13,8 +13,11 @@ export const rawAccountDetails = {
                         stateCode: 'VA',
                         zip_code: '23510',
                     },
-                }
-            }
+                },
+                cellPhone: '(999) 999-9999',
+            },
         },
+        homePhone: null,
+        workPhone: '',
     },
 };

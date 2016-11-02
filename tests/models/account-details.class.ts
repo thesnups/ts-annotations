@@ -18,4 +18,9 @@ export class AccountDetails {
     @JsonProperty('account.details.summary.location.address')
     public address: Address = null;
 
+    @JsonProperty('account.homePhone', {
+        fallbacks: ['account.workPhone', 'account.details.summary.cellPhone']
+    })
+    public phoneNumber: string;
+
 }
