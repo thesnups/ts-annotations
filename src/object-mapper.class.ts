@@ -17,8 +17,8 @@ export class ObjectMapper {
         const typeMapping = typeRef.prototype.typeMapping;
 
         if (pathMapping && typeMapping) {
-            pathMapping.forEach((val, key) => {
-                let value = this.getValueFromObjectPath(json, val);
+            pathMapping.forEach((paths: string[], key: string) => {
+                let value = this.getValueFromObjectPaths(json, paths);
                 let type = typeMapping.get(key);
 
                 if (type) {
@@ -46,6 +46,18 @@ export class ObjectMapper {
             });
         }
         return instance;
+    }
+
+    private getValueFromObjectPaths(obj: any, paths: string[]): any {
+        let numPaths = paths.length;
+        let index = 0;
+        let value = undefined;
+
+        while (!value && index < numPaths) {
+            value = this.getValueFromObjectPath(obj, paths[index++]);
+        }
+
+        return value;
     }
 
     private getValueFromObjectPath(obj: any, path: string): any {
