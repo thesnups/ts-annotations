@@ -1,4 +1,4 @@
-import { JsonProperty } from '../../';
+import { JsonProperty } from '../../src/';
 
 export class EmailAddress {
 

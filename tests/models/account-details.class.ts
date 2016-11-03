@@ -1,4 +1,4 @@
-import { JsonProperty, JsonArray } from '../../';
+import { JsonProperty, JsonArray } from '../../src/';
 import { Address, EmailAddress } from './';
 
 export class AccountDetails {

@@ -1,4 +1,4 @@
-import { ObjectMapper } from '../';
+import { ObjectMapper } from '../src/';
 import { AccountDetails, Address, EmailAddress } from './models/';
 import { rawAccountDetails } from './constants/';
 
