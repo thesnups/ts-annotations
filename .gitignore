@@ -5,3 +5,5 @@ tasks.json
 .vscode/
 npm-debug.log
 .tmp
+**/*.js*
+**/*.d.ts
