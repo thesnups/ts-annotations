@@ -1,7 +1,8 @@
+import Map = require('core-js/es6/map');
 import { MetadataKeys } from '../constants/';
-import { JsonPropertyOptions } from './';
+import { JsonArrayOptions } from './';
 
-export function JsonProperty(path?: string, options?: JsonPropertyOptions) {
+export function JsonArray(path?: string, options?: JsonArrayOptions) {
     return function (target: any, propertyKey: string) {
         if (!target || !propertyKey) {
             return;
@@ -18,5 +19,7 @@ export function JsonProperty(path?: string, options?: JsonPropertyOptions) {
         const type = Reflect.getMetadata(MetadataKeys.TYPE, target, propertyKey);
         target.typeMapping = target.typeMapping || new Map<string, Function>();
         target.typeMapping.set(propertyKey, type);
+
+        Reflect.defineMetadata(MetadataKeys.ARRAY_TYPE, options.type, target, propertyKey);
     };
 }

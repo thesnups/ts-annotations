@@ -1,5 +1,5 @@
-import { JsonProperty } from '../../';
-import { Address } from './';
+import { JsonProperty, JsonArray } from '../../src/';
+import { Address, EmailAddress } from './';
 
 export class AccountDetails {
 
@@ -12,6 +12,9 @@ export class AccountDetails {
     @JsonProperty('account.details.isAwesome')
     public awesomeness: boolean = false;
 
+    @JsonProperty('account.details.isSmelly')
+    public smelliness: boolean = true;
+
     @JsonProperty('account.details.regex')
     public regex: RegExp = null;
 
@@ -22,5 +25,8 @@ export class AccountDetails {
         fallbacks: ['account.workPhone', 'account.details.summary.cellPhone']
     })
     public phoneNumber: string;
+
+    @JsonArray('emailAddresses', { type: EmailAddress })
+    public emailAddresses: EmailAddress[];
 
 }

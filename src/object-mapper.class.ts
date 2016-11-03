@@ -1,3 +1,5 @@
+import { MetadataKeys } from './constants/';
+
 export const primitivesMap = new Map<Function, Function>();
 primitivesMap.set(String, (val: any): string => `${val}`);
 primitivesMap.set(Number, (val: any): number => parseInt(val, 10));
@@ -15,21 +17,25 @@ export class ObjectMapper {
         const typeMapping = typeRef.prototype.typeMapping;
 
         if (pathMapping && typeMapping) {
-            pathMapping.forEach((paths: string[], key: string) => {
+            pathMapping.forEach((paths: string[], propertyKey: string) => {
                 let value = this.getValueFromObjectPaths(json, paths);
-                let type = typeMapping.get(key);
+                let propertyType = typeMapping.get(propertyKey);
 
-                if (type) {
-                    const primitiveConvert = primitivesMap.get(type);
+                if (propertyType) {
+                    const primitiveConvert = primitivesMap.get(propertyType);
+
                     if (primitiveConvert) {
                         value = primitiveConvert(value);
+                    } else if (propertyType === Array && Reflect.hasMetadata(MetadataKeys.ARRAY_TYPE, typeRef.prototype, propertyKey)) {
+                        const arrayType = Reflect.getMetadata(MetadataKeys.ARRAY_TYPE, typeRef.prototype, propertyKey);
+                        value = value.map(arrayItem => this.readValue(arrayItem, arrayType));
                     } else {
-                        value = this.readValue(value, type);
+                        value = this.readValue(value, propertyType);
                     }
                 }
 
-                if (value) {
-                    instance[key] = value;
+                if (typeof value !== 'undefined') {
+                    instance[propertyKey] = value;
                 }
             });
         }
@@ -51,7 +57,7 @@ export class ObjectMapper {
         let index = 0;
         let value = undefined;
 
-        while (!value && index < numPaths) {
+        while (typeof value === 'undefined' && index < numPaths) {
             value = this.getValueFromObjectPath(obj, paths[index++]);
         }
 
@@ -59,12 +65,12 @@ export class ObjectMapper {
     }
 
     private getValueFromObjectPath(obj: any, path: string): any {
-        const paths = path.split('.');
-        const pathsLength = paths.length;
+        const pathParts = path.split('.');
+        const numParts = pathParts.length;
 
         try {
-            for (let i = 0; i < pathsLength; i++) {
-                obj = obj[paths[i]];
+            for (let i = 0; i < numParts; i++) {
+                obj = obj[pathParts[i]];
             };
         } catch (e) {
             obj = undefined;

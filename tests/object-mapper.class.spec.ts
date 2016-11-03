@@ -1,5 +1,5 @@
-import { ObjectMapper } from '../';
-import { AccountDetails, Address } from './models/';
+import { ObjectMapper } from '../src/';
+import { AccountDetails, Address, EmailAddress } from './models/';
 import { rawAccountDetails } from './constants/';
 
 describe('ObjectMapper', () => {
@@ -25,6 +25,7 @@ describe('ObjectMapper', () => {
             expect(accountDetails.name).toEqual(rawAccountDetails.account.details.name);
             expect(accountDetails.age).toEqual(rawAccountDetails.account.details.age);
             expect(accountDetails.awesomeness).toEqual(rawAccountDetails.account.details.isAwesome);
+            expect(accountDetails.smelliness).toEqual(rawAccountDetails.account.details.isSmelly);
 
             expect(accountDetails.regex).toEqual(jasmine.any(RegExp));
             let strRegex = accountDetails.regex.toString();
@@ -38,6 +39,14 @@ describe('ObjectMapper', () => {
             expect(accountDetails.address.zip).toEqual(rawAccountDetails.account.details.summary.location.address.zip_code);
 
             expect(accountDetails.phoneNumber).toEqual(rawAccountDetails.account.details.summary.cellPhone);
+
+            expect(accountDetails.emailAddresses).toEqual(jasmine.any(Array));
+            expect(accountDetails.emailAddresses[0]).toEqual(jasmine.any(EmailAddress));
+            expect(accountDetails.emailAddresses[0].address).toEqual(rawAccountDetails.emailAddresses[0].address);
+            expect(accountDetails.emailAddresses[0].isActive).toEqual(rawAccountDetails.emailAddresses[0].active);
+            expect(accountDetails.emailAddresses[1]).toEqual(jasmine.any(EmailAddress));
+            expect(accountDetails.emailAddresses[1].address).toEqual(rawAccountDetails.emailAddresses[1].address);
+            expect(accountDetails.emailAddresses[1].isActive).toEqual(rawAccountDetails.emailAddresses[1].active);
         });
     });
 });
