@@ -19,18 +19,21 @@ export class ObjectMapper {
         if (pathMapping && typeMapping) {
             pathMapping.forEach((paths: string[], propertyKey: string) => {
                 let value = this.getValueFromObjectPaths(json, paths);
-                let propertyType = typeMapping.get(propertyKey);
 
-                if (propertyType) {
-                    const primitiveConvert = primitivesMap.get(propertyType);
+                if (value !== null) {
+                    let propertyType = typeMapping.get(propertyKey);
 
-                    if (primitiveConvert) {
-                        value = primitiveConvert(value);
-                    } else if (propertyType === Array && Reflect.hasMetadata(MetadataKeys.ARRAY_TYPE, typeRef.prototype, propertyKey)) {
-                        const arrayType = Reflect.getMetadata(MetadataKeys.ARRAY_TYPE, typeRef.prototype, propertyKey);
-                        value = value.map(arrayItem => this.readValue(arrayItem, arrayType));
-                    } else {
-                        value = this.readValue(value, propertyType);
+                    if (!!propertyType) {
+                        const primitiveConvert = primitivesMap.get(propertyType);
+
+                        if (primitiveConvert) {
+                            value = primitiveConvert(value);
+                        } else if (propertyType === Array && Reflect.hasMetadata(MetadataKeys.ARRAY_TYPE, typeRef.prototype, propertyKey)) {
+                            const arrayType = Reflect.getMetadata(MetadataKeys.ARRAY_TYPE, typeRef.prototype, propertyKey);
+                            value = value.map(arrayItem => this.readValue(arrayItem, arrayType));
+                        } else {
+                            value = this.readValue(value, propertyType);
+                        }
                     }
                 }
 

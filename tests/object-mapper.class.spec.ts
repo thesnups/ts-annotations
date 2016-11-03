@@ -47,6 +47,8 @@ describe('ObjectMapper', () => {
             expect(accountDetails.emailAddresses[1]).toEqual(jasmine.any(EmailAddress));
             expect(accountDetails.emailAddresses[1].address).toEqual(rawAccountDetails.emailAddresses[1].address);
             expect(accountDetails.emailAddresses[1].isActive).toEqual(rawAccountDetails.emailAddresses[1].active);
+
+            expect(accountDetails.fbUrl).toEqual(null);
         });
     });
 });

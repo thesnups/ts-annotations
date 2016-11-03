@@ -18,6 +18,7 @@ export const rawAccountDetails = {
                 cellPhone: '(999) 999-9999',
             },
         },
+        facebook_profile_url: null,
     },
     emailAddresses: [
         {

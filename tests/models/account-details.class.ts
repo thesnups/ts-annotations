@@ -29,4 +29,7 @@ export class AccountDetails {
     @JsonArray('emailAddresses', { type: EmailAddress })
     public emailAddresses: EmailAddress[];
 
+    @JsonProperty('account.facebook_profile_url')
+    public fbUrl: string;
+
 }
