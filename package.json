@@ -1,38 +1,39 @@
 {
-    "name": "ts-annotations",
-    "version": "0.0.7",
-    "description": "Decorators for simple object mapping inspired by Jackson Annotations",
-    "main": "build/index.js",
-    "scripts": {
-        "build": "./node_modules/.bin/tsc",
-        "start": "./node_modules/.bin/tsc -w",
-        "pretest": "./node_modules/.bin/tsc --p tsconfig.test.json",
-        "test": "./node_modules/.bin/jasmine",
-        "prepublish": "npm run build"
-    },
-    "contributors": [
-        {
-            "name": "Gary Justin",
-            "email": "gejustin1868@gmail.com"
-        }
-    ],
-    "license": "ISC",
-    "dependencies": {
-        "core-js": "^2.4.1"
-    },
-    "devDependencies": {
-        "@types/core-js": "^0.9.34",
-        "@types/jasmine": "^2.5.37",
-        "@types/reflect-metadata": "0.0.5",
-        "jasmine": "^2.5.2",
-        "jasmine-core": "^2.5.2",
-        "jasmine-spec-reporter": "^2.7.0",
-        "typescript": "^2.0.6"
-    },
-    "files": [
-        "build",
-        "src",
-        "tests",
-        "*.*"
-    ]
+  "name": "ts-annotations",
+  "version": "0.1.1",
+  "description": "Decorators for simple object mapping inspired by Jackson Annotations",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "./node_modules/.bin/tsc",
+    "clean": "rm -rf ./dist",
+    "start": "./node_modules/.bin/tsc -w",
+    "pretest": "./node_modules/.bin/tsc --p tsconfig.test.json",
+    "test": "./node_modules/.bin/jasmine",
+    "prepublish": "npm run clean && npm run build"
+  },
+  "contributors": [
+    {
+      "name": "Gary Justin",
+      "email": "gejustin1868@gmail.com"
+    }
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "@types/core-js": "^0.9.34",
+    "@types/reflect-metadata": "0.0.5",
+    "core-js": "^2.4.1"
+  },
+  "devDependencies": {
+    "@types/jasmine": "^2.5.37",
+    "jasmine": "^2.5.2",
+    "jasmine-core": "^2.5.2",
+    "jasmine-spec-reporter": "^2.7.0",
+    "typescript": "^2.0.6"
+  },
+  "files": [
+    "dist",
+    "src",
+    "tests",
+    "*.*"
+  ]
 }

@@ -1,5 +1,3 @@
-import Map = require('core-js/es6/map');
-
 export const primitivesMap = new Map<Function, Function>();
 primitivesMap.set(String, (val: any): string => `${val}`);
 primitivesMap.set(Number, (val: any): number => parseInt(val, 10));

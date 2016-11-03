@@ -12,9 +12,10 @@
         "baseUrl": ".",
         "typeRoots": [
             "./node_modules/@types"
-        ]
+        ],
+        "outDir": "dist"
     },
     "files": [
-        "index.ts"
+        "src/index.ts"
     ]
 }

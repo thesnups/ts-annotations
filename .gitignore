@@ -1,9 +1,7 @@
 node_modules/
-build/
+dist/
 launch.json
 tasks.json
 .vscode/
 npm-debug.log
 .tmp
-**/*.js*
-**/*.d.ts

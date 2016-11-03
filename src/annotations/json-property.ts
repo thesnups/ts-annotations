@@ -1,4 +1,3 @@
-import Map = require('core-js/es6/map');
 import { JsonPropertyOptions } from './';
 
 export function JsonProperty(path?: string, options?: JsonPropertyOptions) {
