@@ -1,4 +1,3 @@
-import Map = require('core-js/es6/map');
 import { MetadataKeys } from './constants/';
 
 export const primitivesMap = new Map<Function, Function>();
