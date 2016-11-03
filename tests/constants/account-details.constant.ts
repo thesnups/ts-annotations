@@ -4,6 +4,7 @@ export const rawAccountDetails = {
             name: 'Testing123',
             age: 32,
             isAwesome: true,
+            isSmelly: false,
             regex: '^[a-z]*$',
             summary: {
                 location: {
@@ -17,7 +18,15 @@ export const rawAccountDetails = {
                 cellPhone: '(999) 999-9999',
             },
         },
-        homePhone: null,
-        workPhone: '',
     },
+    emailAddresses: [
+        {
+            address: 'someemail@yahoo.com',
+            active: true,
+        },
+        {
+            address: 'anotheremail@yahoo.com',
+            active: false,
+        }
+    ],
 };
