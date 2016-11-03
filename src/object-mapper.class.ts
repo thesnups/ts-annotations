@@ -27,7 +27,7 @@ export class ObjectMapper {
 
                     if (primitiveConvert) {
                         value = primitiveConvert(value);
-                    } else if (Reflect.hasMetadata(MetadataKeys.ARRAY_TYPE, typeRef.prototype, propertyKey)) {
+                    } else if (propertyType === Array && Reflect.hasMetadata(MetadataKeys.ARRAY_TYPE, typeRef.prototype, propertyKey)) {
                         const arrayType = Reflect.getMetadata(MetadataKeys.ARRAY_TYPE, typeRef.prototype, propertyKey);
                         value = value.map(arrayItem => this.readValue(arrayItem, arrayType));
                     } else {
