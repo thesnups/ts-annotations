@@ -32,4 +32,7 @@ export class AccountDetails {
     @JsonProperty('account.facebook_profile_url')
     public fbUrl: string;
 
+    @JsonProperty('undefined.value.test')
+    public twitterUrl: string;
+
 }

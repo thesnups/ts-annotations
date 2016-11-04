@@ -20,7 +20,7 @@ export class ObjectMapper {
             pathMapping.forEach((paths: string[], propertyKey: string) => {
                 let value = this.getValueFromObjectPaths(json, paths);
 
-                if (value !== null) {
+                if (value !== null && value !== undefined) {
                     let propertyType = typeMapping.get(propertyKey);
 
                     if (!!propertyType) {
@@ -37,9 +37,7 @@ export class ObjectMapper {
                     }
                 }
 
-                if (typeof value !== 'undefined') {
-                    instance[propertyKey] = value;
-                }
+                instance[propertyKey] = value;
             });
         }
 
