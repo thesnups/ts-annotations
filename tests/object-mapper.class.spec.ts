@@ -49,6 +49,7 @@ describe('ObjectMapper', () => {
             expect(accountDetails.emailAddresses[1].isActive).toEqual(rawAccountDetails.emailAddresses[1].active);
 
             expect(accountDetails.fbUrl).toEqual(null);
+            expect(accountDetails.twitterUrl).toEqual(undefined);
         });
     });
 });
