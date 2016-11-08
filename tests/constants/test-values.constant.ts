@@ -5,6 +5,8 @@ export const testValues = {
     trueValue: true,
     emptyString: '',
     nonemptyString: 'a',
+    intString: '3',
+    floatString: '1.25',
     emptyArray: [],
     nonemptyArray: [''],
     object: {},
