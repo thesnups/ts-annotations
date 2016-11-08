@@ -5,7 +5,6 @@ export const rawAccountDetails = {
             age: 32,
             isAwesome: true,
             isSmelly: false,
-            regex: '^[a-z]*$',
             summary: {
                 location: {
                     address: {
