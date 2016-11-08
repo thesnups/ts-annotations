@@ -17,11 +17,6 @@ describe('AccountDetails class', () => {
         expect(accountDetails.awesomeness).toEqual(rawAccountDetails.account.details.isAwesome);
         expect(accountDetails.smelliness).toEqual(rawAccountDetails.account.details.isSmelly);
 
-        expect(accountDetails.regex).toEqual(jasmine.any(RegExp));
-        let strRegex = accountDetails.regex.toString();
-        strRegex = strRegex.substring(1, strRegex.length - 1);
-        expect(strRegex).toEqual(rawAccountDetails.account.details.regex);
-
         expect(accountDetails.address).toEqual(jasmine.any(Address));
         expect(accountDetails.address.address).toEqual(rawAccountDetails.account.details.summary.location.address.streetAddress);
         expect(accountDetails.address.city).toEqual(rawAccountDetails.account.details.summary.location.address.city);

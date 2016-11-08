@@ -4,7 +4,6 @@ export const primitivesMap = new Map<Function, Function>();
 primitivesMap.set(String, (val: any): string => `${val}`);
 primitivesMap.set(Number, (val: any): number => typeof val === 'boolean' ? Number(val) : parseFloat(val));
 primitivesMap.set(Boolean, (val: any): boolean => !!val);
-primitivesMap.set(RegExp, (val: any): RegExp => new RegExp(val));
 
 export class ObjectMapper {
 

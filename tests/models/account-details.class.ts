@@ -15,9 +15,6 @@ export class AccountDetails {
     @JsonProperty('account.details.isSmelly')
     public smelliness: boolean = true;
 
-    @JsonProperty('account.details.regex')
-    public regex: RegExp = null;
-
     @JsonProperty('account.details.summary.location.address')
     public address: Address = null;
 
