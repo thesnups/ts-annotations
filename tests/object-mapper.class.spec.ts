@@ -73,11 +73,11 @@ describe('ObjectMapper', () => {
             });
 
             it('should correctly handle a false value', () => {
-
+                expect(stringTests.falseValue).toEqual('false');
             });
 
             it('should correctly handle a true value', () => {
-
+                expect(stringTests.trueValue).toEqual('true');
             });
 
             it('should correctly handle an empty string', () => {
@@ -89,15 +89,15 @@ describe('ObjectMapper', () => {
             });
 
             it('should correctly handle an empty array', () => {
-
+                expect(stringTests.emptyArray).toEqual('');
             });
 
             it('should correctly handle a non-empty array', () => {
-
+                expect(stringTests.nonemptyArray).toEqual(testValues.nonemptyArray.toString());
             });
 
             it('should correctly handle an object', () => {
-
+                expect(stringTests.object).toEqual('[object Object]');
             });
 
             it('should correctly handle a -1', () => {
