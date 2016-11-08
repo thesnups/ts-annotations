@@ -2,13 +2,11 @@ import { MetadataKeys } from './constants/';
 
 export const primitivesMap = new Map<Function, Function>();
 primitivesMap.set(String, (val: any): string => `${val}`);
-primitivesMap.set(Number, (val: any): number => parseInt(val, 10));
+primitivesMap.set(Number, (val: any): number => typeof val === 'boolean' ? Number(val) : parseFloat(val));
 primitivesMap.set(Boolean, (val: any): boolean => !!val);
 primitivesMap.set(RegExp, (val: any): RegExp => new RegExp(val));
 
 export class ObjectMapper {
-
-    constructor() { ; }
 
     public readValue<T>(json: string | any, typeRef: any, ...args: any[]): T {
 
