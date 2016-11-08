@@ -8,8 +8,6 @@ primitivesMap.set(RegExp, (val: any): RegExp => new RegExp(val));
 
 export class ObjectMapper {
 
-    constructor() { ; }
-
     public readValue<T>(json: string | any, typeRef: any, ...args: any[]): T {
 
         let instance: T = new typeRef(...args);
