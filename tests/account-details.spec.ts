@@ -35,5 +35,9 @@ describe('AccountDetails class', () => {
 
         expect(accountDetails.fbUrl).toEqual(null);
         expect(accountDetails.twitterUrl).toEqual(undefined);
+
+        expect(accountDetails.favoriteColors).toEqual(jasmine.any(Array));
+        expect(accountDetails.favoriteColors[0]).toEqual(jasmine.any(String));
+        expect(accountDetails.favoriteColors[0]).toEqual(rawAccountDetails.favoriteColors[0]);
     });
 });

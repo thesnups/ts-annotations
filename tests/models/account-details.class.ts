@@ -32,4 +32,6 @@ export class AccountDetails {
     @JsonProperty('undefined.value.test')
     public twitterUrl: string;
 
+    @JsonArray('favoriteColors', { type: String })
+    public favoriteColors: string[] = [];
 }

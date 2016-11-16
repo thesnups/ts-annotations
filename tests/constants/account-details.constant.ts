@@ -29,4 +29,8 @@ export const rawAccountDetails = {
             active: false,
         }
     ],
+    favoriteColors: [
+        'blue',
+        'orange',
+    ]
 };
