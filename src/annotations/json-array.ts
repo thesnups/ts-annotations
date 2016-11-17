@@ -1,5 +1,5 @@
-import Map = require('core-js/es6/map');
 import { MetadataKeys } from '../constants/';
+import { PathMetadata, TypeMetadata } from '../metadata';
 import { JsonArrayOptions } from './';
 
 export function JsonArray(path?: string, options?: JsonArrayOptions) {
@@ -9,16 +9,25 @@ export function JsonArray(path?: string, options?: JsonArrayOptions) {
         }
 
         let paths = [path || propertyKey];
-        if (options && options.fallbacks) {
-            paths = paths.concat(options.fallbacks);
+        if (options) {
+            paths = paths.concat(options.fallbacks || []);
         }
 
-        target.pathMapping = target.pathMapping || new Map<string, string[]>();
-        target.pathMapping.set(propertyKey, paths);
+        const pathMapping: Map<string, PathMetadata> = target.pathMapping || new Map<string, PathMetadata>();
+        const pathMetadata: PathMetadata = pathMapping.get(propertyKey) || {} as PathMetadata;
+        pathMetadata.paths = paths;
 
-        const type = Reflect.getMetadata(MetadataKeys.TYPE, target, propertyKey);
-        target.typeMapping = target.typeMapping || new Map<string, Function>();
-        target.typeMapping.set(propertyKey, type);
+        pathMapping.set(propertyKey, pathMetadata);
+
+        target.pathMapping = pathMapping;
+
+        const type: Function = Reflect.getMetadata(MetadataKeys.TYPE, target, propertyKey);
+        const typeMapping: Map<string, TypeMetadata> = target.typeMapping || new Map<string, TypeMetadata>();
+        const typeMetadata: TypeMetadata = { type };
+
+        typeMapping.set(propertyKey, typeMetadata);
+
+        target.typeMapping = typeMapping;
 
         Reflect.defineMetadata(MetadataKeys.ARRAY_TYPE, options.type, target, propertyKey);
     };

@@ -1,4 +1,5 @@
 import { MetadataKeys } from './constants/';
+import { PathMetadata, TypeMetadata } from './metadata';
 
 export const primitivesMap = new Map<Function, Function>();
 primitivesMap.set(String, (val: any): string => `${val}`);
@@ -10,15 +11,16 @@ export class ObjectMapper {
     public readValue<T>(json: string | any, typeRef: any, ...args: any[]): T {
 
         let instance: T = new typeRef(...args);
-        const pathMapping = typeRef.prototype.pathMapping;
-        const typeMapping = typeRef.prototype.typeMapping;
+        const pathMapping: Map<string, PathMetadata> = typeRef.prototype.pathMapping;
+        const typeMapping: Map<string, TypeMetadata> = typeRef.prototype.typeMapping;
 
         if (pathMapping && typeMapping) {
-            pathMapping.forEach((paths: string[], propertyKey: string) => {
-                let value = this.getValueFromObjectPaths(json, paths);
+            pathMapping.forEach((pathMap: PathMetadata, propertyKey: string) => {
+
+                let value = pathMap.useParentJson ? json : this.getValueFromObjectPaths(json, pathMap.paths);
 
                 if (value !== null && value !== undefined) {
-                    let propertyType = typeMapping.get(propertyKey);
+                    let propertyType: Function = typeMapping.get(propertyKey).type;
 
                     if (!!propertyType) {
                         const primitiveConvert = primitivesMap.get(propertyType);
