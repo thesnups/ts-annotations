@@ -1,22 +1,16 @@
 import { MetadataKeys } from '../constants/';
 import { PathMetadata, TypeMetadata } from '../metadata';
-import { DeserializeOptions } from './';
 
-export function JsonProperty(path?: string, options?: DeserializeOptions) {
+export function ParentJsonProperty() {
     return function (target: any, propertyKey: string) {
         if (!target || !propertyKey) {
             return;
         }
 
-        let paths = [path || propertyKey];
-        if (options) {
-            paths = paths.concat(options.fallbacks || []);
-        }
-
         const pathMapping: Map<string, PathMetadata> = target.pathMapping || new Map<string, PathMetadata>();
-        const pathMetadata: PathMetadata = pathMapping.get(propertyKey) || {} as PathMetadata;
-        pathMetadata.paths = paths;
+        const pathMetadata: PathMetadata = pathMapping.get(propertyKey) || { paths: [] };
 
+        pathMetadata.useParentJson = true;
         pathMapping.set(propertyKey, pathMetadata);
 
         target.pathMapping = pathMapping;

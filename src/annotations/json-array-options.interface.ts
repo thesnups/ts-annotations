@@ -1,4 +1,5 @@
-export interface JsonArrayOptions {
-    fallbacks?: string[];
+import { DeserializeOptions } from './';
+
+export interface JsonArrayOptions extends DeserializeOptions {
     type: Function;
 }

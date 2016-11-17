@@ -18,6 +18,13 @@ export const rawAccountDetails = {
             },
         },
         facebook_profile_url: null,
+        billing: {
+            creditCard: {
+                type: 'Visa',
+                number: '1234567890123456',
+                expiration: '09/20'
+            }
+        }
     },
     emailAddresses: [
         {
@@ -32,5 +39,5 @@ export const rawAccountDetails = {
     favoriteColors: [
         'blue',
         'orange',
-    ]
+    ],
 };

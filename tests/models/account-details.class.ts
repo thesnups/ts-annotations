@@ -1,4 +1,5 @@
-import { JsonProperty, JsonArray } from '../../src/';
+import { BillingInfo } from './billiing-info.class';
+import { JsonProperty, JsonArray, ParentJsonProperty } from '../../src/';
 import { Address, EmailAddress } from './';
 
 export class AccountDetails {
@@ -15,8 +16,11 @@ export class AccountDetails {
     @JsonProperty('account.details.isSmelly')
     public smelliness: boolean = true;
 
-    @JsonProperty('account.details.summary.location.address')
+    @ParentJsonProperty()
     public address: Address = null;
+
+    @JsonProperty('account.billing')
+    public billingInfo: BillingInfo;
 
     @JsonProperty('account.homePhone', {
         fallbacks: ['account.workPhone', 'account.details.summary.cellPhone']

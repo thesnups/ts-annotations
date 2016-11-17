@@ -2,16 +2,16 @@ import { JsonProperty } from '../../src/';
 
 export class Address {
 
-    @JsonProperty('streetAddress')
+    @JsonProperty('account.details.summary.location.address.streetAddress')
     public address: string = '';
 
-    @JsonProperty('city')
+    @JsonProperty('account.details.summary.location.address.city')
     public city: string = '';
 
-    @JsonProperty('stateCode')
+    @JsonProperty('account.details.summary.location.address.stateCode')
     public state: string = '';
 
-    @JsonProperty('zip_code')
+    @JsonProperty('account.details.summary.location.address.zip_code')
     public zip: string = '';
 
 }

@@ -39,5 +39,9 @@ describe('AccountDetails class', () => {
         expect(accountDetails.favoriteColors).toEqual(jasmine.any(Array));
         expect(accountDetails.favoriteColors[0]).toEqual(jasmine.any(String));
         expect(accountDetails.favoriteColors[0]).toEqual(rawAccountDetails.favoriteColors[0]);
+
+        expect(accountDetails.billingInfo.ccNumber).toEqual(rawAccountDetails.account.billing.creditCard.number);
+        expect(accountDetails.billingInfo.ccType).toEqual(rawAccountDetails.account.billing.creditCard.type);
+        expect(accountDetails.billingInfo.expiration).toEqual(rawAccountDetails.account.billing.creditCard.expiration);
     });
 });
