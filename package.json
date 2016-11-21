@@ -1,6 +1,6 @@
 {
   "name": "ts-annotations",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "Decorators for simple object mapping inspired by Jackson Annotations",
   "main": "dist/index.js",
   "scripts": {
