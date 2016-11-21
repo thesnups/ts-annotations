@@ -40,4 +40,9 @@ export const rawAccountDetails = {
         'blue',
         'orange',
     ],
+    null: {
+        value: {
+            test: null,
+        },
+    },
 };

@@ -41,7 +41,9 @@ export class ObjectMapper {
                     }
                 }
 
-                instance[propertyKey] = value;
+                if (value !== undefined) {
+                    instance[propertyKey] = value;
+                }
             });
         }
 

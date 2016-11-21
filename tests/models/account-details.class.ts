@@ -38,4 +38,10 @@ export class AccountDetails {
 
     @JsonArray('favoriteColors', { type: String })
     public favoriteColors: string[] = [];
+
+    @JsonProperty('undefined.value.test')
+    public stringWithFallback: string = 'fallback';
+
+    @JsonProperty('null.value.test')
+    public string2WithFallback: string = 'fallback';
 }
