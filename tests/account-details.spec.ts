@@ -43,5 +43,8 @@ describe('AccountDetails class', () => {
         expect(accountDetails.billingInfo.ccNumber).toEqual(rawAccountDetails.account.billing.creditCard.number);
         expect(accountDetails.billingInfo.ccType).toEqual(rawAccountDetails.account.billing.creditCard.type);
         expect(accountDetails.billingInfo.expiration).toEqual(rawAccountDetails.account.billing.creditCard.expiration);
+
+        expect(accountDetails.stringWithFallback).toEqual('fallback');
+        expect(accountDetails.string2WithFallback).toBeNull();
     });
 });
