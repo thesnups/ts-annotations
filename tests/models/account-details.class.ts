@@ -44,4 +44,10 @@ export class AccountDetails {
 
     @JsonProperty('null.value.test')
     public string2WithFallback: string = 'fallback';
+
+    @JsonProperty('favoriteColors[0]')
+    public primaryColor: string;
+
+    @JsonProperty('favoriteColors[3]')
+    public secondaryColor: string;
 }
