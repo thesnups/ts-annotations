@@ -72,13 +72,8 @@ export class ObjectMapper {
     }
 
     private getValueFromObjectPath(obj: any, path: string): any {
-        const pathParts = path.split('.');
-        const numParts = pathParts.length;
-
         try {
-            for (let i = 0; i < numParts; i++) {
-                obj = obj[pathParts[i]];
-            };
+            obj = path.replace(/\[(\w+)\]/g, '.$1').split('.').reduce((o, i) => o[i], obj);
         } catch (e) {
             obj = undefined;
         }
