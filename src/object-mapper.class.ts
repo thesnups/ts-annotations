@@ -73,7 +73,21 @@ export class ObjectMapper {
 
     private getValueFromObjectPath(obj: any, path: string): any {
         try {
-            obj = path.replace(/\[(\w+)\]/g, '.$1').split('.').reduce((o, i) => o[i], obj);
+            let objectKey;
+            const objectKeyMatches = path.match(/\[([^\]]+)\]/);
+
+            if (objectKeyMatches) {
+                objectKey = objectKeyMatches[1];
+
+                let objectKeyValue;
+                objectKeyValue = this.getValueFromObjectPath(obj, objectKey);
+
+                if (typeof objectKeyValue !== 'undefined') {
+                    path = path.replace(objectKey, objectKeyValue.toString());
+                }
+            }
+
+            obj = path.replace(/\[(\w+)\]/, '.$1').split('.').reduce(function (o, i) { return o[i]; }, obj);
         } catch (e) {
             obj = undefined;
         }

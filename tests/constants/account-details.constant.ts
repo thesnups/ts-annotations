@@ -45,4 +45,16 @@ export const rawAccountDetails = {
             test: null,
         },
     },
+    photos: {
+        files: [
+            'featuredPhoto.jpg',
+            'primaryPhoto.jpg',
+            'mainPhoto.png',
+        ],
+        ids: {
+            primary: 1,
+            main: 2,
+            featured: 0,
+        }
+    }
 };

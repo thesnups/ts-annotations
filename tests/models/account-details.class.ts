@@ -50,4 +50,10 @@ export class AccountDetails {
 
     @JsonProperty('favoriteColors[3]')
     public secondaryColor: string;
+
+    @JsonProperty('photos.files[photos.ids.primary]')
+    public primaryPhotoFileName: string;
+
+    @JsonProperty('photos.files[photos.ids.noop]')
+    public photoThatDoesntExist: string;
 }
