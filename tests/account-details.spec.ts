@@ -49,5 +49,8 @@ describe('AccountDetails class', () => {
 
         expect(accountDetails.stringWithFallback).toEqual('fallback');
         expect(accountDetails.string2WithFallback).toBeNull();
+
+        expect(accountDetails.primaryPhotoFileName).toEqual(rawAccountDetails.photos.files[rawAccountDetails.photos.ids.primary]);
+        expect(accountDetails.photoThatDoesntExist).toEqual(undefined);
     });
 });
