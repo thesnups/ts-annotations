@@ -52,7 +52,7 @@ export class ObjectMapper {
         if (callbacks.length) {
             callbacks.forEach((fn) => {
                 if (typeof instance[fn] === 'function') {
-                    instance[fn].call(instance, instance, json, typeRef);
+                    instance[fn].call(instance, instance, json, typeRef, this);
                 }
             });
         }
