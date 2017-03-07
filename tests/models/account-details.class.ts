@@ -1,5 +1,5 @@
 import { BillingInfo } from './billiing-info.class';
-import { JsonProperty, JsonArray, ParentJsonProperty } from '../../src/';
+import { ObjectMapper, JsonProperty, JsonArray, ParentJsonProperty, OnDeserialized } from '../../src/';
 import { Address, EmailAddress } from './';
 
 export class AccountDetails {
@@ -56,4 +56,16 @@ export class AccountDetails {
 
     @JsonProperty('photos.files[photos.ids.noop]')
     public photoThatDoesntExist: string;
+
+    public deserializedParams: any;
+
+    @OnDeserialized()
+    public onDeserialized(instance: AccountDetails, json: any, typeRef: any, mapper: ObjectMapper) {
+        this.deserializedParams = {
+            instance: instance,
+            json: json,
+            typeRef: typeRef,
+            mapper: mapper,
+        };
+    }
 }

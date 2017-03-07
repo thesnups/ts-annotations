@@ -52,5 +52,10 @@ describe('AccountDetails class', () => {
 
         expect(accountDetails.primaryPhotoFileName).toEqual(rawAccountDetails.photos.files[rawAccountDetails.photos.ids.primary]);
         expect(accountDetails.photoThatDoesntExist).toEqual(undefined);
+
+        expect(accountDetails.deserializedParams.instance).toEqual(accountDetails);
+        expect(accountDetails.deserializedParams.json).toEqual(rawAccountDetails);
+        expect(accountDetails.deserializedParams.typeRef).toEqual(AccountDetails);
+        expect(accountDetails.deserializedParams.mapper).toEqual(mapper);
     });
 });
