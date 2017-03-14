@@ -19,7 +19,7 @@
   ],
   "license": "ISC",
   "dependencies": {
-    "@types/core-js": "^0.9.34",
+    "@types/core-js": "0.9.35",
     "@types/reflect-metadata": "0.0.5",
     "core-js": "^2.4.1"
   },
