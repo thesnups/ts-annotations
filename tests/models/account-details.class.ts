@@ -1,6 +1,7 @@
 import { BillingInfo } from './billiing-info.class';
 import { ObjectMapper, JsonProperty, JsonArray, ParentJsonProperty, OnDeserialized } from '../../src/';
 import { Address, EmailAddress } from './';
+import { ArgsTest1, ArgsTest2, ArgsTest3, NoArgsTest } from './args-tests/';
 
 export class AccountDetails {
 
@@ -56,6 +57,30 @@ export class AccountDetails {
 
     @JsonProperty('photos.files[photos.ids.noop]')
     public photoThatDoesntExist: string;
+
+    @JsonProperty('argsTest', { args: [] })
+    public argsTest1: ArgsTest1;
+
+    @JsonProperty('argsTest', { args: ['arg1'] })
+    public argsTest2: ArgsTest2;
+
+    @JsonProperty('argsTest', { args: ['arg1', 'arg2'] })
+    public argsTest3: ArgsTest3;
+
+    @JsonProperty('argsTest')
+    public noArgsTest: NoArgsTest;
+
+    @JsonArray('argsArrayTest', { type: ArgsTest1, args: [] })
+    public argsArrayTest1: ArgsTest1[];
+
+    @JsonArray('argsArrayTest', { type: ArgsTest2, args: ['arg1'] })
+    public argsArrayTest2: ArgsTest2[];
+
+    @JsonArray('argsArrayTest', { type: ArgsTest3, args: ['arg1', 'arg2'] })
+    public argsArrayTest3: ArgsTest3[];
+
+    @JsonArray('argsArrayTest', { type: NoArgsTest })
+    public noArgsArrayTest: NoArgsTest[];
 
     public deserializedParams: any;
 

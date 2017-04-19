@@ -53,6 +53,35 @@ describe('AccountDetails class', () => {
         expect(accountDetails.primaryPhotoFileName).toEqual(rawAccountDetails.photos.files[rawAccountDetails.photos.ids.primary]);
         expect(accountDetails.photoThatDoesntExist).toEqual(undefined);
 
+        expect(accountDetails.argsTest1.arg1).toBeUndefined();
+
+        expect(accountDetails.argsTest2.arg1).toEqual('arg1');
+        expect(accountDetails.argsTest2.arg2).toBeUndefined();
+
+        expect(accountDetails.argsTest3.arg1).toEqual('arg1');
+        expect(accountDetails.argsTest3.arg2).toEqual('arg2');
+        expect(accountDetails.argsTest3.arg3).toBeUndefined();
+
+        expect(accountDetails.noArgsTest.argsLen).toEqual(0);
+
+        expect(accountDetails.argsArrayTest1[0].arg1).toBeUndefined();
+        expect(accountDetails.argsArrayTest1[1].arg1).toBeUndefined();
+
+        expect(accountDetails.argsArrayTest2[0].arg1).toEqual('arg1');
+        expect(accountDetails.argsArrayTest2[0].arg2).toBeUndefined();
+        expect(accountDetails.argsArrayTest2[1].arg1).toEqual('arg1');
+        expect(accountDetails.argsArrayTest2[1].arg2).toBeUndefined();
+
+        expect(accountDetails.argsArrayTest3[0].arg1).toEqual('arg1');
+        expect(accountDetails.argsArrayTest3[0].arg2).toEqual('arg2');
+        expect(accountDetails.argsArrayTest3[0].arg3).toBeUndefined();
+        expect(accountDetails.argsArrayTest3[1].arg1).toEqual('arg1');
+        expect(accountDetails.argsArrayTest3[1].arg2).toEqual('arg2');
+        expect(accountDetails.argsArrayTest3[1].arg3).toBeUndefined();
+
+        expect(accountDetails.noArgsArrayTest[0].argsLen).toEqual(0);
+        expect(accountDetails.noArgsArrayTest[1].argsLen).toEqual(0);
+
         expect(accountDetails.deserializedParams.instance).toEqual(accountDetails);
         expect(accountDetails.deserializedParams.json).toEqual(rawAccountDetails);
         expect(accountDetails.deserializedParams.typeRef).toEqual(AccountDetails);
