@@ -1,5 +1,5 @@
 import { MetadataKeys } from './constants/';
-import { PathMetadata, TypeMetadata } from './metadata';
+import { ArgsMetadata, PathMetadata, TypeMetadata } from './metadata';
 
 export const primitivesMap = new Map<Function, Function>();
 primitivesMap.set(String, (val: any): string => `${val}`);
@@ -11,6 +11,7 @@ export class ObjectMapper {
     public readValue<T>(json: string | any, typeRef: any, ...args: any[]): T {
 
         let instance: T = new typeRef(...args);
+        const argsMapping: Map<string, ArgsMetadata> = typeRef.prototype.argsMapping;
         const pathMapping: Map<string, PathMetadata> = typeRef.prototype.pathMapping;
         const typeMapping: Map<string, TypeMetadata> = typeRef.prototype.typeMapping;
 
@@ -27,16 +28,20 @@ export class ObjectMapper {
 
                         if (primitiveConvert) {
                             value = primitiveConvert(value);
-                        } else if (propertyType === Array && Reflect.hasMetadata(MetadataKeys.ARRAY_TYPE, typeRef.prototype, propertyKey)) {
-                           const arrayType = Reflect.getMetadata(MetadataKeys.ARRAY_TYPE, typeRef.prototype, propertyKey);
-                            value = value.map(arrayItem => {
-                                if (primitivesMap.has(arrayType)) {
-                                    return primitivesMap.get(arrayType)(arrayItem);
-                                }
-                                return this.readValue(arrayItem, arrayType);
-                            });
                         } else {
-                            value = this.readValue(value, propertyType);
+                            const args = argsMapping.get(propertyKey) || [];
+
+                            if (propertyType === Array && Reflect.hasMetadata(MetadataKeys.ARRAY_TYPE, typeRef.prototype, propertyKey)) {
+                                const arrayType = Reflect.getMetadata(MetadataKeys.ARRAY_TYPE, typeRef.prototype, propertyKey);
+                                value = value.map(arrayItem => {
+                                    if (primitivesMap.has(arrayType)) {
+                                        return primitivesMap.get(arrayType)(arrayItem);
+                                    }
+                                    return this.readValue(arrayItem, arrayType, ...args);
+                                });
+                            } else {
+                                value = this.readValue(value, propertyType, ...args);
+                            }
                         }
                     }
                 }
