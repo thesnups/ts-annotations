@@ -9,13 +9,17 @@ export function JsonProperty(path?: string, options?: DeserializeOptions) {
         }
 
         let paths = [path || propertyKey];
+        let ignoreNull = false;
+
         if (options) {
             paths = paths.concat(options.fallbacks || []);
+            ignoreNull = !!options.ignoreNull
         }
 
         const pathMapping: Map<string, PathMetadata> = target.pathMapping || new Map<string, PathMetadata>();
         const pathMetadata: PathMetadata = pathMapping.get(propertyKey) || {} as PathMetadata;
         pathMetadata.paths = paths;
+        pathMetadata.ignoreNull = ignoreNull;
 
         pathMapping.set(propertyKey, pathMetadata);
 

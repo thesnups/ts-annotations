@@ -41,7 +41,7 @@ export class ObjectMapper {
                     }
                 }
 
-                if (value !== undefined) {
+                if (value !== undefined && !(pathMap.ignoreNull && value === null)) {
                     instance[propertyKey] = value;
                 }
             });
