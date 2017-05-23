@@ -8,7 +8,7 @@ export function ParentJsonProperty() {
         }
 
         const pathMapping: Map<string, PathMetadata> = target.pathMapping || new Map<string, PathMetadata>();
-        const pathMetadata: PathMetadata = pathMapping.get(propertyKey) || { paths: [] };
+        const pathMetadata: PathMetadata = pathMapping.get(propertyKey) || { paths: [], ignoreNull: false };
 
         pathMetadata.useParentJson = true;
         pathMapping.set(propertyKey, pathMetadata);

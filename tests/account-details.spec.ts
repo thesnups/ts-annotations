@@ -57,5 +57,9 @@ describe('AccountDetails class', () => {
         expect(accountDetails.deserializedParams.json).toEqual(rawAccountDetails);
         expect(accountDetails.deserializedParams.typeRef).toEqual(AccountDetails);
         expect(accountDetails.deserializedParams.mapper).toEqual(mapper);
+
+        expect(accountDetails.ignoreNullTest1).toEqual('testValue1');
+        expect(accountDetails.ignoreNullTest2).toEqual(null);
+        expect(accountDetails.ignoreNullTest3).toEqual(null);
     });
 });

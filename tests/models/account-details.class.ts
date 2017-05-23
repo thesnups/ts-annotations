@@ -59,6 +59,15 @@ export class AccountDetails {
 
     public deserializedParams: any;
 
+    @JsonProperty('ignoreNullTest', { ignoreNull: true })
+    public ignoreNullTest1: string = 'testValue1';
+
+    @JsonProperty('ignoreNullTest', { ignoreNull: false })
+    public ignoreNullTest2: string = 'testValue2';
+
+    @JsonProperty('ignoreNullTest')
+    public ignoreNullTest3: string = 'testValue3';
+
     @OnDeserialized()
     public onDeserialized(instance: AccountDetails, json: any, typeRef: any, mapper: ObjectMapper) {
         this.deserializedParams = {

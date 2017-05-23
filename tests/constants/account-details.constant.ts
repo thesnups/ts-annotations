@@ -56,5 +56,6 @@ export const rawAccountDetails = {
             main: 2,
             featured: 0,
         }
-    }
+    },
+    ignoreNullTest: null,
 };
