@@ -191,6 +191,6 @@ Library for mapping JSON into instances of TypeScript classes. Inspired by [Jack
 
   }
   ```
-  Please look at our [examples](1) for code with more substance
+  Please look at our [examples][1] for code with more substance
 
   [1]: https://github.com/gejustin/ts-annotations/tree/master/examples
