@@ -1,7 +1,7 @@
 # ts-annotations
 [![Build Status](https://travis-ci.org/gejustin/ts-annotations.svg?branch=master)](https://travis-ci.org/gejustin/ts-annotations)
 
-Library for mapping JSON into instances of TypeScript classes. Inspired by [Jackson Annotations](https://github.com/FasterXML/jackson-annotations). Implementation details have diverged quite a bit from what Jackson offers, but hopefully if you're familiar with it, this will be useful to you in a JavaScript context.
+Library for mapping anonymous JS objects into instances of TypeScript classes. Inspired by [Jackson Annotations](https://github.com/FasterXML/jackson-annotations). Implementation details have diverged quite a bit from what Jackson offers, but hopefully if you're familiar with it, this will be useful to you in a JavaScript context.
 
 **Notes:**
   1. This documentation is currently under development.
