@@ -19,7 +19,6 @@
   ],
   "license": "ISC",
   "dependencies": {
-    "@types/core-js": "0.9.35",
     "@types/reflect-metadata": "0.0.5",
     "core-js": "^2.4.1"
   },
@@ -28,7 +27,7 @@
     "jasmine": "^2.5.2",
     "jasmine-core": "^2.5.2",
     "jasmine-spec-reporter": "^2.7.0",
-    "typescript": "^2.0.6"
+    "typescript": "^2.4.1"
   },
   "files": [
     "dist",
