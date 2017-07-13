@@ -49,9 +49,9 @@ Library for mapping anonymous JS objects into instances of TypeScript classes. I
      }
   ```
 
-  In our application we want to use a more streamlined object, get some type hinting and make sure our view does not explicitly depend on the shape of the source object we received from some outside source (because we know how to code for boundaries).
+  In our application we want to use a more streamlined object, get some type hinting and make sure our view does not explicitly depend on the shape of the source object we received from some outside database or API (because we know how to code for boundaries).
 
-  So maybe we have a class:
+  So we draft up a class to model this data for our application:
 
   ```TypeScript
   class User {
@@ -64,7 +64,7 @@ Library for mapping anonymous JS objects into instances of TypeScript classes. I
   }
   ```
 
-  Normally I would require some code that manually maps properties from the source object to the public fields on my class.
+  Normally we would require some code that manually maps properties from the source object to the public fields of the class.
 
   ```TypeScript
   const user = new User();
